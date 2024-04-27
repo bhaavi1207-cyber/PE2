@@ -1,0 +1,132 @@
+{
+    "juice": {
+        "natural": false,
+        "protein": "0.2 gm",
+        "energy": "61 kcal",
+        "sugars": "15 gm",
+        "warning": {
+            "mild": "Contains added sugar"
+        },
+        "consumption": "once a day is fine"
+    },
+    "banana": {
+        "natural": true,
+        "protein": "0.9 gm",
+        "energy": "61 kcal",
+        "sugars": "10 gm",
+        "warning": {},
+        "consumption": "once a day is fine"
+    },
+    "dew": {
+        "natural": false,
+        "protein": "0.1 gm",
+        "energy": "45 kcal",
+        "sugars": "13 gm",
+        "warning": {
+            "mild": "High sugar content"
+        },
+        "consumption": "consume occasionally"
+    },
+    "kurkure": {
+        "natural": false,
+        "protein": "2.1 gm",
+        "energy": "160 kcal",
+        "sugars": "2 gm",
+        "fat": "9 gm",
+        "warning": {
+            "severe": "High in fat and calories"
+        },
+        "consumption": "consume occasionally"
+    },
+    "lays": {
+        "natural": false,
+        "protein": "2.1 gm",
+        "energy": "160 kcal",
+        "sugars": "1 gm",
+        "fat": "10 gm",
+        "warning": {
+            "severe": "High in fat and calories"
+        },
+        "consumption": "consume occasionally"
+    },
+    "milk": {
+        "natural": true,
+        "protein": "8 gm",
+        "energy": "103 kcal",
+        "sugars": "12 gm",
+        "warning": {},
+        "consumption": "recommended daily"
+    },
+    "mountain": {
+        "natural": true,
+        "protein": "0 gm",
+        "energy": "0 kcal",
+        "sugars": "0 gm",
+        "warning": {
+            "mild": "No nutritional value"
+        },
+        "consumption": "consume rarely"
+    },
+    "orange": {
+        "natural": true,
+        "protein": "1.2 gm",
+        "energy": "62 kcal",
+        "sugars": "12 gm",
+        "warning": {},
+        "consumption": "recommended daily"
+    },
+    "pepsi": {
+        "natural": false,
+        "protein": "0 gm",
+        "energy": "41 kcal",
+        "sugars": "11 gm",
+        "warning": {
+            "mild": "Contains caffeine and added sugar",
+            "mild": "not good for health in long term"
+        },
+        "consumption": "consume occasionally"
+    },
+    "potato": {
+        "natural": true,
+        "protein": "2 gm",
+        "energy": "77 kcal",
+        "sugars": "0.8 gm",
+        "fat": "0.1 gm",
+        "warning": {},
+        "consumption": "once a week is fine"
+    },
+    "rice": {
+        "natural": true,
+        "protein": "2.7 gm",
+        "energy": "130 kcal",
+        "sugars": "0.1 gm",
+        "fat": "0.3 gm",
+        "warning": {},
+        "consumption": "recommended as part of balanced diet"
+    },
+    "salad": {
+        "natural": true,
+        "protein": "1.3 gm",
+        "energy": "15 kcal",
+        "sugars": "1 gm",
+        "warning": {},
+        "consumption": "recommended daily"
+    },
+    "slice": {
+        "natural": false,
+        "protein": "0.6 gm",
+        "energy": "30 kcal",
+        "sugars": "6 gm",
+        "warning": {},
+        "consumption": "once a week is fine"
+    },
+    "white": {
+        "natural": false,
+        "protein": "11 gm",
+        "energy": "364 kcal",
+        "sugars": "0 gm",
+        "fat": "0.5 gm",
+        "warning": {},
+        "consumption": "consume occasionally"
+    }
+}
