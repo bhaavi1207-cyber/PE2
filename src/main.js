@@ -56,6 +56,8 @@ function openSelector() {
   reuploadButton.innerHTML = "Re-Upload Photo";
   switchCameraButton.innerHTML = "Switch Camera";
   trackButton.innerHTML = "Track";
+  img.src = "";
+  img.parentElement.classList.add("hidden");
   document.querySelector("input[type=file]").value = "";
   selection.classList.remove("hidden");
   outputarea.classList.add("hidden");
@@ -141,14 +143,20 @@ function postImage() {
     button.setAttribute("disabled", true);
   });
   var data = img.src;
+  var contentLength = data.length;
   fetch("/predict", {
     method: "POST",
     body: JSON.stringify({ image: data }),
     headers: {
       "Content-Type": "application/json",
+      'Content-Length': contentLength,
     },
   })
     .then(async (response) => {
+      if(response.status == 413){
+        alert("Photo Was Too Big To Process. Please Choose Another Photo And Try Again")
+        openSelector();
+      }
       if (response.status == 200) {
         displayOutput(await response.json());
       } else if (response.status == 500) {
