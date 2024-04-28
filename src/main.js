@@ -99,42 +99,36 @@ function takepicture() {
   }
 }
 
-function switchCamera() {
-  navigator.mediaDevices
-    .enumerateDevices()
-    .then(function (devices) {
-      var videoDevices = devices.filter(function (device) {
-        return device.kind === "videoinput";
+async function switchCamera() {
+  try {
+    const mediaStream = await navigator.mediaDevices.getUserMedia({ audio: true });
+    const tracks = mediaStream.getTracks();
+    await tracks[0].stop(); // Stop the audio track (permission request)
+
+    const devices = await navigator.mediaDevices.enumerateDevices();
+    const videoDevices = devices.filter(device => device.kind === "videoinput");
+
+    if (videoDevices.length > 1) {
+      const video = document.getElementById("yourVideoId"); // Replace with your video element's ID
+      const currentDeviceId = video.srcObject.getVideoTracks()[0].getSettings().deviceId;
+      const nextDeviceId = videoDevices.find(device => device.deviceId !== currentDeviceId).deviceId;
+
+      const newStream = await navigator.mediaDevices.getUserMedia({
+        video: { deviceId: nextDeviceId.toString() },
+        audio: false
       });
-      console.log(videoDevices);
-      if (videoDevices.length > 1) {
-        var currentDeviceId = video.srcObject
-          .getVideoTracks()[0]
-          .getSettings().deviceId;
-        var nextDeviceId = videoDevices.find(function (device) {
-          return device.deviceId !== currentDeviceId;
-        }).deviceId;
-        navigator.mediaDevices
-          .getUserMedia({
-            video: { deviceId: nextDeviceId.toString() },
-            audio: false,
-          })
-          .then(async (stream) => { 
-            video.srcObject = stream;
-            video.parentElement.classList.remove("hidden");
-            video.play();
-          })
-          .catch(function (error) {
-            console.error("Error switching camera:", error);
-          });
-      } else {
-        console.log("Only one camera available");
-      }
-    })
-    .catch(function (error) {
-      console.error("Error enumerating devices:", error);
-    });
+
+      video.srcObject = newStream;
+      video.parentElement.classList.remove("hidden");
+      await video.play();
+    } else {
+      console.log("Only one camera available");
+    }
+  } catch (error) {
+    console.error("Error switching camera:", error);
+  }
 }
+
 
 function closeCamera() {
   video.srcObject.getTracks().forEach((track) => track.stop());
