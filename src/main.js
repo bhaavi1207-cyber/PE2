@@ -130,7 +130,6 @@ async function switchCamera() {
   }
 }
 
-
 function closeCamera() {
   video.srcObject.getTracks().forEach((track) => track.stop());
   video.srcObject = null;

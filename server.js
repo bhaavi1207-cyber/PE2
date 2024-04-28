@@ -30,8 +30,9 @@ app.post("/predict", async (req, res) => {
     headers: {
       "Content-Type": "application/x-www-form-urlencoded",
     },
-  })
-    .then(function (response) {
+  }).catch(function (error) {
+    res.status(500).send("Photo was too big to process.");
+  }).then(function (response) {
       if (response.data.predicted_classes.length > 0) {
         var foodJSONdata =
           JSON.parse( fs.readFileSync("foodInfo.json"))[response.data.predicted_classes[0]];
