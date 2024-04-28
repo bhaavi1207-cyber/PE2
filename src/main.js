@@ -62,9 +62,9 @@ function openSelector() {
   selection.classList.remove("hidden");
   outputarea.classList.add("hidden");
 }
-function startCam() {
+function startCam(face = true) {
   navigator.mediaDevices
-    .getUserMedia({ video: true, audio: false })
+    .getUserMedia({ video: {facingMode : face ? "user" : "environment"}, audio: false })
     .then((stream) => {
       selection.classList.add("hidden");
       video.srcObject = stream;
@@ -103,33 +103,7 @@ function takepicture() {
 }
 
 async function switchCamera() {
-  try {
-    const mediaStream = await navigator.mediaDevices.getUserMedia({ audio: true });
-    const tracks = mediaStream.getTracks();
-    await tracks[0].stop(); // Stop the audio track (permission request)
-
-    const devices = await navigator.mediaDevices.enumerateDevices();
-    const videoDevices = devices.filter(device => device.kind === "videoinput");
-
-    if (videoDevices.length > 1) {
-      const video = document.getElementById("yourVideoId"); // Replace with your video element's ID
-      const currentDeviceId = video.srcObject.getVideoTracks()[0].getSettings().deviceId;
-      const nextDeviceId = videoDevices.find(device => device.deviceId !== currentDeviceId).deviceId;
-
-      const newStream = await navigator.mediaDevices.getUserMedia({
-        video: { deviceId: nextDeviceId.toString() },
-        audio: false
-      });
-
-      video.srcObject = newStream;
-      video.parentElement.classList.remove("hidden");
-      await video.play();
-    } else {
-      console.log("Only one camera available");
-    }
-  } catch (error) {
-    console.error("Error switching camera:", error);
-  }
+startCam(false);
 }
 
 function closeCamera() {
