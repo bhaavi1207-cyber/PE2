@@ -99,33 +99,40 @@ function takepicture() {
   }
 }
 
-function switchCamera(){
-  navigator.mediaDevices.enumerateDevices()
-    .then(function(devices) {
-      var videoDevices = devices.filter(function(device) {
-        return device.kind === 'videoinput';
+function switchCamera() {
+  navigator.mediaDevices
+    .enumerateDevices()
+    .then(function (devices) {
+      var videoDevices = devices.filter(function (device) {
+        return device.kind === "videoinput";
       });
-
+      console.log(videoDevices);
       if (videoDevices.length > 1) {
-        var currentDeviceId = video.srcObject.getVideoTracks()[0].getSettings().deviceId;
-        var nextDeviceId = videoDevices.find(function(device) {
+        var currentDeviceId = video.srcObject
+          .getVideoTracks()[0]
+          .getSettings().deviceId;
+        var nextDeviceId = videoDevices.find(function (device) {
           return device.deviceId !== currentDeviceId;
         }).deviceId;
-
-        navigator.mediaDevices.getUserMedia({ video: { deviceId: nextDeviceId }, audio: false })
-          .then(function(stream) {
+        navigator.mediaDevices
+          .getUserMedia({
+            video: { deviceId: nextDeviceId.toString() },
+            audio: false,
+          })
+          .then(async (stream) => {
             video.srcObject = stream;
+            video.parentElement.classList.remove("hidden");
             video.play();
           })
-          .catch(function(error) {
-            console.error('Error switching camera:', error);
+          .catch(function (error) {
+            console.error("Error switching camera:", error);
           });
       } else {
-        console.log('Only one camera available');
+        console.log("Only one camera available");
       }
     })
-    .catch(function(error) {
-      console.error('Error enumerating devices:', error);
+    .catch(function (error) {
+      console.error("Error enumerating devices:", error);
     });
 }
 
