@@ -15,7 +15,7 @@ var fat = document.getElementById("fat");
 var productImg = document.getElementById("productImg");
 var outputWarning = document.getElementById("warning-area");
 var consumption = document.getElementById("consumption");
-
+var switchCameraButton = document.getElementById("switchCameraButton");
 var warning = `<div class="warning text-lg w-full h-auto bg-yellow-300 bg-opacity-45 px-3 border-2 border-white rounded-xl font-bold my-3 ">
           <img width="40" height="40" src="https://img.icons8.com/emoji/40/warning-emoji.png" alt="warning" class="inline-block"/>
          $MESSAGE
@@ -51,9 +51,10 @@ function openSelector() {
   img.parentElement.querySelectorAll("button").forEach((button, index) => {
     button.removeAttribute("disabled");
   });
-  recaptureButton.innerHTML="Re-Take Photo";
-  reuploadButton.innerHTML="Re-Upload Photo";
-  trackButton.innerHTML="Track";
+  recaptureButton.innerHTML = "Re-Take Photo";
+  reuploadButton.innerHTML = "Re-Upload Photo";
+  switchCameraButton.innerHTML = "Switch Camera";
+  trackButton.innerHTML = "Track";
   document.querySelector("input[type=file]").value = "";
   selection.classList.remove("hidden");
   outputarea.classList.add("hidden");
@@ -97,6 +98,37 @@ function takepicture() {
     closeCamera();
   }
 }
+
+function switchCamera(){
+  navigator.mediaDevices.enumerateDevices()
+    .then(function(devices) {
+      var videoDevices = devices.filter(function(device) {
+        return device.kind === 'videoinput';
+      });
+
+      if (videoDevices.length > 1) {
+        var currentDeviceId = video.srcObject.getVideoTracks()[0].getSettings().deviceId;
+        var nextDeviceId = videoDevices.find(function(device) {
+          return device.deviceId !== currentDeviceId;
+        }).deviceId;
+
+        navigator.mediaDevices.getUserMedia({ video: { deviceId: nextDeviceId }, audio: false })
+          .then(function(stream) {
+            video.srcObject = stream;
+            video.play();
+          })
+          .catch(function(error) {
+            console.error('Error switching camera:', error);
+          });
+      } else {
+        console.log('Only one camera available');
+      }
+    })
+    .catch(function(error) {
+      console.error('Error enumerating devices:', error);
+    });
+}
+
 function closeCamera() {
   video.srcObject.getTracks().forEach((track) => track.stop());
   video.srcObject = null;

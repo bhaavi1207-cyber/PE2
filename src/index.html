@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="p-0 m-0 w-screen">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -10,21 +10,21 @@
     class="w-screen flex justify-center items-center flex-col m-0 p-0 overflow-x-clip"
   >
     <nav
-      class="w-full bg-opacity-55 fixed top-0 left-0 text-white uppercase grid grid-cols-3 text-lg px-9 py-4 transition-all duration-300"
+      class="w-screen z-50 bg-opacity-55 fixed top-0 left-0 text-white uppercase grid grid-cols-3 text-lg px-9 py-4 transition-all duration-300"
     >
       <div class="col">
         <a href="#" class="normal-case font-bold">Aahaar</a>
       </div>
       <div class="col">
-        <ul class="grid grid-cols-4 px-9 gap-2">
+        <ul class="lg:grid grid-cols-4 px-9 gap-2 hidden">
           <li class="col font-semibold"><a href="#">Home</a></li>
           <li class="col font-semibold"><a href="#">About</a></li>
           <li class="col font-semibold"><a href="#">Begin</a></li>
           <li class="col font-semibold"><a href="#">Team</a></li>
         </ul>
       </div>
-      <div class="col text-end">
-        <button class="bg-[#086064] text-white text-lg py-2 px-5 uppercase">
+      <div class="col text-end hidden lg:block  ">
+        <button class="bg-[#086064] text-white lg:text-lg text-base py-2 px-5 uppercase  ">
           Get Started
         </button>
       </div>
@@ -34,23 +34,23 @@
       class="tracking-wide bg-gradient-to-r from-[#086064] to-[#42c382] -z-20 w-full h-screen flex justify-center"
     >
       <div
-        class="absolute w-1/4 h-screen right-1 top-0 bg-[#42c382] -z-10 rounded-3xl"
+        class="absolute w-1/4 h-screen right-1 top-0 bg-[#42c382] -z-10 rounded-3xl hidden lg:block"
       ></div>
-      <div class="grid grid-cols-2 w-full p-10 m-10 z-10">
+      <div class="grid grid-cols-1 lg:grid-cols-2 w-full lg:p-10 lg:m-10 p-3 mt-10 lg:mt-10 z-10">
         <div class="col flex items-start justify-center flex-col p-4">
-          <h1 class="text-6xl text-white font-bold block pb-2">Aahaar</h1>
-          <h2 class="text-4xl font-semibold text-white">
+          <h1 class="text-4xl lg:text-6xl text-white font-bold block pb-2">Aahaar</h1>
+          <h2 class="text-2xl lg:text-4xl font-semibold text-white">
             ML Based Food Nutrition Tracker
           </h2>
           <button
-            class="bg-[#42c382] text-white text-2xl my-5 py-3 px-7 uppercase"
+            class="bg-[#42c382] text-white text-2xl lg:my-5 lg:py-3 lg:px-7 my-3 px-5 py-2 uppercase"
           >
             Get Started
           </button>
         </div>
 
         <div class="col flex justify-center items-center flex-col">
-          <img src="./img/doc_cover.png" class="scale-125" />
+          <img src="./img/doc_cover.png" class="lg:scale-125 scale-105" />
         </div>
       </div>
     </section>
@@ -63,24 +63,24 @@
     </section>
 
     <section
-      class="bg-[#42c382] w-screen flex justify-center items-center h-screen"
+      class="bg-[#42c382] w-screen flex justify-center items-center min-h-screen pt-5"
     >
       <div
         id="selection"
-        class="bg-[#5dcf96] border-2 flex items-center justify-center border-white w-2/3 h-2/3 rounded-3xl flex-col text-center file:m-0"
+        class="bg-[#5dcf96] border-2 flex items-center justify-center border-white w-4/5 h3/4 lg:w-2/3 lg:h-2/3 rounded-3xl flex-col text-center file:m-0"
       >
-        <div class="w-64 mb-10">
+        <div class="w-64 lg:mb-10 mb-5">
           <input
             type="file"
             title="From Gallery"
             accept="image/jpg, image/jpeg, image/png"
-            class="text-center file:bg-[#086064] file:relative file:text-xl file:my-5 file:rounded-lg file:w-64 file:py-3 file:px-7 capitalize file:text-center file:block file:text-white"
+            class="text-center file:bg-[#086064] file:relative file:text-xl file:my-5 file:rounded-lg w-3/5 md:w-fit md:file:w-64 lg:file:py-3 lg:file:px-7 file:border-0 file:py-2 file:px-5 capitalize file:text-center file:block file:text-white"
           />
         </div>
 
         <button
           onclick="javascript:startCam()"
-          class="bg-[#086064] text-white text-xl my-5 rounded-lg w-64 py-3 px-7 capitalize"
+          class="bg-[#086064] text-white text-xl my-5 rounded-lg w-3/5 lg:w-64 lg:py-3 lg:px-7 px-5 py-2 capitalize"
         >
           Click Photo
         </button>
@@ -90,11 +90,15 @@
         class="bg-[#5dcf96] border-2 hidden flex items-center justify-center border-white w-2/3 h-2/3 rounded-3xl flex-col text-center"
       ></canvas>
       <div
-        class="camera hidden items-center justify-center w-2/3 h-2/3 rounded-3xl flex-col text-center flex"
+        class="camera hidden items-center justify-center w-4/5  lg:w-2/3 h-2/3 rounded-3xl flex-col text-center flex"
       >
         <video id="video" class="h-full rounded-lg border-white border-2 mb-5">
           Video stream not available.
         </video>
+        <button  class="bg-[#086064] text-white text-lg py-2 px-5 capitalize my-3"
+        onclick="switchCamera()" id="switchCameraButton">
+          Switch Camera
+        </button>
         <button
           class="bg-[#086064] text-white text-lg py-2 px-5 capitalize"
           id="startbutton"
@@ -103,7 +107,7 @@
           Take photo
         </button>
       </div>
-      <div class="hidden">
+      <div class="hidden w-4/5">
         <img
           src=""
           class="rounded-3xl border-2 border-white h-full w-auto m-auto"
@@ -112,7 +116,7 @@
         />
         <div class="grid grid-cols-2 gap-3 my-3">
           <button
-            class="col bg-[#086064] text-white text-lg py-2 px-5 capitalize disabled:bg-opacity-45"
+            class="col bg-[#086064] text-white text-lg md:py-2 md:px-5 py-1 px-3 capitalize disabled:bg-opacity-45"
             id="recaptureButton"
             onclick="javascript:this.parentElement.parentElement.classList.add('hidden'); startCam();"
           >
@@ -120,7 +124,7 @@
           </button>
 
           <button
-            class="col bg-[#086064] text-white text-lg py-2 px-5 capitalize disabled:bg-opacity-45"
+            class="col bg-[#086064] text-white text-lg md:py-2 md:px-5 py-1 px-3 capitalize disabled:bg-opacity-45"
             id="reuploadButton"
             onclick="javascript:this.parentElement.parentElement.classList.add('hidden');document.querySelector('input[type=file]').value = ''; document.querySelector('input[type=file]').click()"
           >
@@ -128,7 +132,7 @@
           </button>
 
           <button
-            class="col bg-[#086064] text-white text-lg py-2 px-5 capitalize disabled:bg-opacity-45"
+            class="col bg-[#086064] text-white text-lg md:py-2 md:px-5 py-1 px-3 capitalize disabled:bg-opacity-45"
             id="trackButton"
             onclick="postImage()"
           >
@@ -143,18 +147,18 @@
         <div
           class="w-full bg-[#5dcf96] h-full py-6 px-4 text-white relative border-white border-2 rounded-3xl text-start capitalize"
         >
-          <h1 id="productName" class="text-4xl font-bold">PRODUCT NAME</h1>
+          <h1 id="productName" class="md:text-4xl font-bold text-2xl mb-3 lg:mb-auto">PRODUCT NAME</h1>
           <img
             src=""
-            class="absolute h-56 right-10 top-5 rounded-xl"
+            class=" lg:absolute h-44 lg:h-56 lg:right-10 lg:top-5 rounded-xl"
             alt=""
             id="productImg"
           />
-          <h2 id="natureFood" class="mt-3 text-2xl font-semibold">
+          <h2 id="natureFood" class="mt-3 lg:text-2xl text-lg font-semibold">
             ARTIFICIAL NAME
           </h2>
-          <h2 class="mt-4 text-2xl font-bold mb-3">Nutritional Value</h2>
-          <table class="font-semibold text-xl w-1/3">
+          <h2 class="mt-4 lg:text-2xl text-lg font-bold mb-3">Nutritional Value</h2>
+          <table class="font-semibold text-xl lg:w-1/3 w-full">
             <tr>
               <td>Protein</td>
               <td id="protein">100</td>
@@ -172,7 +176,7 @@
               <td id="fat">100</td>
             </tr>
           </table>
-          <h2 id="consumption" class="mt-3 text-2xl font-semibold">
+          <h2 id="consumption" class="mt-3 text-lg lg:text-2xl font-semibold">
             Suggested Consumption : LELE BHAI
           </h2>
           <div class="w-full py-3 px-2" id="warning-area"></div>
@@ -191,8 +195,10 @@
       text-align: center;
       color: white;
       font-weight: 500;
+      margin: auto;
       font-size: large;
     }
+
   </style>
 <script src="./main.js"></script>
 <script>
