@@ -63,6 +63,7 @@ function openSelector() {
   outputarea.classList.add("hidden");
 }
 function startCam(face = true) {
+  closeCamera();
   navigator.mediaDevices
     .getUserMedia({ video: {facingMode : face ? "user" : "environment"}, audio: false })
     .then((stream) => {
