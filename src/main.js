@@ -17,6 +17,7 @@ var outputWarning = document.getElementById("warning-area");
 var consumption = document.getElementById("consumption");
 var switchCameraButton = document.getElementById("switchCameraButton");
 var menuArea = document.getElementById("menuArea");
+var faceCamera = true;
 var warning = `<div class="warning text-lg w-full h-auto bg-yellow-300 bg-opacity-45 px-3 border-2 border-white rounded-xl font-bold my-3 ">
           <img width="40" height="40" src="https://img.icons8.com/emoji/40/warning-emoji.png" alt="warning" class="inline-block"/>
          $MESSAGE
@@ -65,7 +66,10 @@ function openSelector() {
 function startCam(face = true) {
   closeCamera();
   navigator.mediaDevices
-    .getUserMedia({ video: {facingMode : face ? "user" : "environment"}, audio: false })
+    .getUserMedia({
+      video: { facingMode: face ? "user" : "environment" },
+      audio: false,
+    })
     .then((stream) => {
       selection.classList.add("hidden");
       video.srcObject = stream;
@@ -104,12 +108,17 @@ function takepicture() {
 }
 
 async function switchCamera() {
-startCam(false);
+  startCam(!faceCamera);
+  faceCamera = !faceCamera;
 }
 
 function closeCamera() {
-  video.srcObject.getTracks().forEach((track) => track.stop());
-  video.srcObject = null;
+  try {
+    video.srcObject.getTracks().forEach((track) => track.stop());
+    video.srcObject = null;
+  } catch (e) {
+    console.log(e);
+  }
 }
 
 function postImage() {
@@ -124,12 +133,14 @@ function postImage() {
     body: JSON.stringify({ image: data }),
     headers: {
       "Content-Type": "application/json",
-      'Content-Length': contentLength,
+      "Content-Length": contentLength,
     },
   })
     .then(async (response) => {
-      if(response.status == 413){
-        alert("Photo Was Too Big To Process. Please Choose Another Photo And Try Again")
+      if (response.status == 413) {
+        alert(
+          "Photo Was Too Big To Process. Please Choose Another Photo And Try Again"
+        );
         openSelector();
       }
       if (response.status == 200) {
@@ -179,10 +190,10 @@ function displayOutput(data, isError = false) {
   img.parentElement.classList.add("hidden");
 }
 
-function openMenu(){
+function openMenu() {
   menuArea.classList.remove("hidden");
 }
 
-function closeMenu(){
+function closeMenu() {
   menuArea.classList.add("hidden");
 }
