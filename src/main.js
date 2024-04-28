@@ -16,6 +16,7 @@ var productImg = document.getElementById("productImg");
 var outputWarning = document.getElementById("warning-area");
 var consumption = document.getElementById("consumption");
 var switchCameraButton = document.getElementById("switchCameraButton");
+var menuArea = document.getElementById("menuArea");
 var warning = `<div class="warning text-lg w-full h-auto bg-yellow-300 bg-opacity-45 px-3 border-2 border-white rounded-xl font-bold my-3 ">
           <img width="40" height="40" src="https://img.icons8.com/emoji/40/warning-emoji.png" alt="warning" class="inline-block"/>
          $MESSAGE
@@ -194,4 +195,12 @@ function displayOutput(data, isError = false) {
   }
   outputarea.classList.remove("hidden");
   img.parentElement.classList.add("hidden");
+}
+
+function openMenu(){
+  menuArea.classList.remove("hidden");
+}
+
+function closeMenu(){
+  menuArea.classList.add("hidden");
 }

@@ -49,3 +49,8 @@ app.post("/predict", async (req, res) => {
       res.status(500).send("Some Issue Occured, Try Again Later.");
     });
 });
+
+app.get("/team", (req, res) => {
+  res.send("<h1>PRAKHAR BSDKE KARDE</h1>")
+  // res.sendFile(__dirname + "/src/team.html");
+})

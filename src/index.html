@@ -3,14 +3,14 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Aahar</title>
+    <title>Aahaar</title>
     <link rel="stylesheet" href="style.css" />
   </head>
   <body
     class="w-screen flex justify-center items-center flex-col m-0 p-0 overflow-x-clip"
   >
     <nav
-      class="w-screen z-50 bg-opacity-55 fixed top-0 left-0 text-white uppercase grid grid-cols-3 text-lg px-9 py-4 transition-all duration-300"
+      class="w-screen h-[4.5rem] lg:h-auto z-50 bg-opacity-55 fixed top-0 left-0 text-white uppercase grid grid-cols-3 text-lg px-9 py-4 transition-all duration-300"
     >
       <div class="col">
         <a href="#detect" class="normal-case font-bold">Aahaar</a>
@@ -20,7 +20,7 @@
           <li class="col font-semibold"><a href="#">Home</a></li>
           <li class="col font-semibold"><a href="#about">About</a></li>
           <li class="col font-semibold"><a href="#detect">Begin</a></li>
-          <li class="col font-semibold"><a href="#">Team</a></li>
+          <li class="col font-semibold"><a href="/team">Team</a></li>
         </ul>
       </div>
       <div class="col text-end hidden lg:block">
@@ -31,13 +31,75 @@
           Get Started
         </button>
       </div>
+      <!-- MOBILE VIEW -->
+      <div class="col lg:hidden text-end px-2 relative">
+        <button onclick="openMenu()">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            class="h-8 w-8"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M4 6h16M4 12h16M4 18h16"
+            ></path>
+          </svg>
+        </button>
+      </div>
+      <div
+        id="menuArea"
+        class="w-screen hidden bg-[#42c382] backdrop-blur-2xl bg-opacity-40 text-center absolute left-0 lg:hidden border-b-2 border-gray-300"
+      >
+        <ul>
+          <li class="text-white text-lg pt-2 px-12 pt-4 font-semibold text-end ">
+            <button onclick="closeMenu()" class="h-auto p-0">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                class="h-8 w-8"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M6 18L18 6M6 6l12 12"
+                ></path>
+              </svg>
+            </button>
+          </li>
+          <li class="text-white text-lg py-2 px-5 font-semibold">
+            <a onclick="closeMenu()" href="#">Home</a>
+          </li>
+          <li class="text-white text-lg py-2 px-5 font-semibold">
+            <a onclick="closeMenu()" href="#about">About</a>
+          </li>
+          <li class="text-white text-lg py-2 px-5 font-semibold">
+            <a onclick="closeMenu()" href="#detect">Begin</a>
+          </li>
+          <li class="text-white text-lg py-2 px-5 font-semibold">
+            <a onclick="closeMenu()" href="/team">Team</a>
+          </li>
+          <li> <button
+            class="bg-[#086064] text-white lg:text-lg text-base py-2 px-5  w-full uppercase"
+            onclick="window.location.href='#detect'; closeMenu()"
+          >
+            Get Started
+          </button></li>
+        </ul>
+      </div>
     </nav>
 
     <section
       class="tracking-wide bg-gradient-to-r from-[#086064] to-[#42c382] w-full h-screen flex justify-center z-10"
     >
       <div
-        class="absolute w-1/4 h-screen right-1 top-0 blur-sm  bg-[#42c382] -z-10 rounded-3xl hidden lg:block"
+        class="absolute w-1/4 h-screen right-1 top-0 blur-sm bg-[#42c382] -z-10 rounded-3xl hidden lg:block"
       ></div>
       <div
         class="grid grid-cols-1 lg:grid-cols-2 w-full lg:p-10 lg:m-10 p-3 mt-10 lg:mt-10 z-10"
@@ -64,16 +126,24 @@
     </section>
     <section
       id="about"
-      class="bg-gradient-to-r from-[#086164] to-[#42c382] w-screen min-h-[80vh]  text-white flex flex-col justify-center"
+      class="bg-gradient-to-r from-[#086164] to-[#42c382] w-screen min-h-[80vh] text-white flex flex-col justify-center"
     >
-
-    <h1 class="text-center font-bold text-3xl text-white w-full lg:text-5xl">About</h1>
-<p class="text-2xl font-semibold text-center my-3 capitalize">Aahaar is a ML Powere₫ Food tracking platform that can accurately detect the nutritional content of food based on images as input.</p>
-      <div class="grid gap-x-10 gap-y-5 p-10 lg:grid-cols-3 w-screen grid-cols-1">
+      <h1 class="text-center font-bold text-3xl text-white w-full lg:text-5xl">
+        About
+      </h1>
+      <p class="text-2xl font-semibold text-center my-3 capitalize">
+        Aahaar is a ML Powere₫ Food tracking platform that can accurately detect
+        the nutritional content of food based on images as input.
+      </p>
+      <div
+        class="grid gap-x-10 gap-y-5 p-10 lg:grid-cols-3 w-screen grid-cols-1"
+      >
         <div
           class="col bg-[#42c382] w-full p-4 m-auto rounded-2xl border-2 border-white flex justify-center flex-col items-center"
         >
-          <h1 class="text-2xl font-bold capitalize lg:text-3xl">Health tracking</h1>
+          <h1 class="text-2xl font-bold capitalize lg:text-3xl">
+            Health tracking
+          </h1>
           <img
             class="my-5"
             width="94"
@@ -89,21 +159,28 @@
         <div
           class="col bg-[#42c382] w-full p-4 m-auto rounded-2xl border-2 border-white flex justify-center flex-col items-center"
         >
-          <h1 class="text-2xl font-bold capitalize lg:text-3xl">Complete insights</h1>
+          <h1 class="text-2xl font-bold capitalize lg:text-3xl">
+            Complete insights
+          </h1>
           <img
             class="my-5"
             width="94"
             height="94"
-            src="https://img.icons8.com/3d-fluency/188/search.png" alt="search"/>
-       
+            src="https://img.icons8.com/3d-fluency/188/search.png"
+            alt="search"
+          />
+
           <p class="capitalize text-lg text-center">
-            Find What to eat and how much to eat, Complete analysis of food just a click away.
+            Find What to eat and how much to eat, Complete analysis of food just
+            a click away.
           </p>
         </div>
         <div
           class="col bg-[#42c382] w-full p-4 m-auto rounded-2xl border-2 border-white flex justify-center flex-col items-center"
         >
-          <h1 class="text-2xl font-bold capitalize lg:text-3xl">hasssle free</h1>
+          <h1 class="text-2xl font-bold capitalize lg:text-3xl">
+            hasssle free
+          </h1>
           <img
             class="my-5"
             width="94"
@@ -112,7 +189,8 @@
             alt="medical-doctor--v2"
           />
           <p class="capitalize text-lg text-center">
-            Track Nutrients and Calories in your food with just a photo, on the go
+            Track Nutrients and Calories in your food with just a photo, on the
+            go
           </p>
         </div>
       </div>
@@ -122,9 +200,9 @@
       id="detect"
       class="relative z-10 bg-gradient-to-r from-[#086064] to-[#42c382] w-screen flex justify-center items-center min-h-screen pt-5 flex-col"
     >
-    <div
-    class="absolute w-1/4 h-screen blur-sm -left-2 top-0 bg-[#42c382] -z-10 rounded-3xl hidden lg:block"
-  ></div>
+      <div
+        class="absolute w-1/4 h-screen blur-sm -left-2 top-0 bg-[#42c382] -z-10 rounded-3xl hidden lg:block"
+      ></div>
 
       <h1 class="text-3xl lg:text-5xl text-white font-bold h-fit mb-2">
         Track
@@ -285,9 +363,11 @@
       if (window.scrollY > 60) {
         document.querySelector("nav").classList.add("bg-[#086064]");
         document.querySelector("nav").classList.add("backdrop-blur-lg");
+        document.querySelector("#menuArea").classList.add("!bg-opacity-100");
       } else {
         document.querySelector("nav").classList.remove("bg-[#086064]");
         document.querySelector("nav").classList.remove("backdrop-blur-lg");
+        document.querySelector("#menuArea").classList.remove("!bg-opacity-100");
       }
     };
   </script>
