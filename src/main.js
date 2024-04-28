@@ -119,7 +119,7 @@ function switchCamera() {
             video: { deviceId: nextDeviceId.toString() },
             audio: false,
           })
-          .then(async (stream) => {
+          .then(async (stream) => { 
             video.srcObject = stream;
             video.parentElement.classList.remove("hidden");
             video.play();
