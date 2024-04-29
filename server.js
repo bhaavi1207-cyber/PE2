@@ -3,8 +3,6 @@ const fs = require("fs");
 const express = require("express");
 const app = express();
 const bodyParser = require("body-parser");
-const { type } = require("os");
-
 // const image = fs.readFileSync("YOUR_IMAGE.jpg", {
 //     encoding: "base64"
 // });
@@ -52,6 +50,5 @@ app.post("/predict", async (req, res) => {
 });
 
 app.get("/team", (req, res) => {
-  res.send("<h1>PRAKHAR BSDKE KARDE</h1>")
-  // res.sendFile(__dirname + "/src/team.html");
+   res.sendFile(__dirname + "/src/team.html");
 })

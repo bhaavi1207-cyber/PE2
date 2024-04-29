@@ -1,165 +1,331 @@
-
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Meet Our Team</title>
-   <link rel="stylesheet" href="style.css">
-    <style>
-       
-        
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <nav
+      class="w-screen h-[4.5rem] lg:h-auto z-50 bg-opacity-55 fixed top-0 left-0 text-white uppercase grid grid-cols-3 text-lg px-9 py-4 transition-all duration-300"
+    >
+      <div class="col">
+        <a href="/#detect" class="normal-case font-bold">Aahaar</a>
+      </div>
+      <div class="col">
+        <ul class="lg:grid grid-cols-4 px-9 gap-2 hidden">
+          <li class="col font-semibold"><a href="/">Home</a></li>
+          <li class="col font-semibold"><a href="/#about">About</a></li>
+          <li class="col font-semibold"><a href="/#detect">Begin</a></li>
+          <li class="col font-semibold"><a href="#">Team</a></li>
+        </ul>
+      </div>
+      <div class="col text-end hidden lg:block">
+        <button
+          class="bg-[#086064] text-white lg:text-lg text-base py-2 px-5 uppercase"
+          onclick="window.location.href='#detect'"
+        >
+          Get Started
+        </button>
+      </div>
+      <!-- MOBILE VIEW -->
+      <div class="col lg:hidden text-end px-2 relative">
+        <button onclick="openMenu()">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            class="h-8 w-8"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M4 6h16M4 12h16M4 18h16"
+            ></path>
+          </svg>
+        </button>
+      </div>
+      <div
+        id="menuArea"
+        class="w-screen hidden bg-[#42c382] backdrop-blur-2xl bg-opacity-40 text-center absolute left-0 lg:hidden border-b-2 border-gray-300"
+      >
+        <ul>
+          <li class="text-white text-lg pt-2 px-12 pt-4 font-semibold text-end">
+            <button onclick="closeMenu()" class="h-auto p-0">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                class="h-8 w-8"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M6 18L18 6M6 6l12 12"
+                ></path>
+              </svg>
+            </button>
+          </li>
+          <li class="text-white text-lg py-2 px-5 font-semibold">
+            <a onclick="closeMenu()" href="/">Home</a>
+          </li>
+          <li class="text-white text-lg py-2 px-5 font-semibold">
+            <a onclick="closeMenu()" href="/#about">About</a>
+          </li>
+          <li class="text-white text-lg py-2 px-5 font-semibold">
+            <a onclick="closeMenu()" href="/#detect">Begin</a>
+          </li>
+          <li class="text-white text-lg py-2 px-5 font-semibold">
+            <a onclick="closeMenu()" href="#">Team</a>
+          </li>
+          <li>
+            <button
+              class="bg-[#086064] text-white lg:text-lg text-base py-2 px-5 w-full uppercase font-semibold"
+              onclick="window.location.href='#detect'; closeMenu()"
+            >
+              Get Started
+            </button>
+          </li>
+        </ul>
+      </div>
+    </nav>
 
-        .home-container{
-            width: 100%;
-            height: 100vh;
-            align-items: center;
-            justify-content: center;
-            background-color: #3ba950;
-        }
-        .profile-card{
-            position: relative;
-            width: 220px;
-            height: 220px;
-            background-color: #5bb637;
-            padding: 30px;
-            border-radius: 50%;
-            box-shadow: -5px 8px 45px rgba(51, 51, 51, 0.126);
-            transition: all .4s;
-            margin: 0 20px;
-        }
-        .profile-card:hover{
-            border-radius: 10px;
-            height: 260px;
-        }
-        .profile-card .img{
-            position: relative;
-            width: 100%;
-            height: 100%;
-        }
-        .profile-card:hover img{
-            border-radius: 10px;
-            transform: translateY(-70px);
-        }
-        .img img{
-            object-fit: fill;
-            width: 100%;
-            border-radius: 50%;
-            transition: all .4s;
-            z-index: 99;
-        }
-        .caption{
-            text-align: center;
-            transform: translateY(-90px);
-            opacity: 0;
-            pointer-events: none;
-            transition: all .5s;
-        }
-        .profile-card:hover .caption{
-            opacity: 1;
-            pointer-events: all;
-        }
-        .caption h3{
-            font-size: 21px;
-            color: #0c1da1;
-            font-weight: 600;
-        }
-        .caption p{
-            font-size: 15px;
-            font-weight: 500;
-            margin: 2px 0 12px 0;
-        }
-        .caption .social-links i{
-            font-size: 21px;
-            margin: 0 3px;
-            cursor: pointer;
-            color: #f3f1f1;
-            transition: all .4s;
-        }
-        .caption .social-links i:hover{
-            color: #24c39e;
-        }
-    </style>
-</head>
-<body>
-    <div class="home-container">
-        <div class="text-4xl text-white font-bold block">
-            <h1>MEET OUR TEAM :-</h1>
-        </div>
-<div class="flex">
-    <div class="profile-card block">
-        <div class="img">
-            <img src="./aru_boy.jpg" >
-        </div>
-        <div class="caption">
-            <h3>ARU BOY</h3>
-            <p>SEX WORKER</p>
-            <div class="social-links">
-                <i class="fa-brands fa-github"></i>
-                <i class="fa-brands fa-linkedin"></i>
-                <i class="fa-brands fa-instagram"></i>
+    <section
+      id="team"
+      class="tracking-wide bg-gradient-to-r from-[#086064] to-[#42c382] w-screen min-h-screen flex justify-center z-10 flex-col p-10 lg:p-20"
+    >
+      <h1 class="font-bold text-3xl text-white text-center my-10">
+        Meet The Team
+      </h1>
+
+      <div class="flex flex-wrap justify-center align-middle gap-10">
+        <!-- PROFILE CARD -->
+        <div
+          class="w-60 h-96 rounded-2x relative text-center items-center flex"
+        >
+          <img
+            src="./img/harshita.jpg"
+            class="brightness-90 rounded-2xl object-cover w-full h-full border-black border-[3px]"
+          />
+          <div
+            class="bg-fuchsia-300 rounded-3xl border-black border-[3px] absolute w-4/5 h-auto p-2 bottom-3 capitalize z-10 font-bold text-black text-2xl mx-auto right-[10%] left-[10%]"
+          >
+            <h1 class="mb-2">harshita</h1>
+            <div class="grid grid-cols-3 w-full justify-items-center">
+              <div class="col">
+                <img
+                  width="25"
+                  height="25"
+                  src="https://img.icons8.com/glyph-neue/25/000000/github.png"
+                  alt="github"
+                />
+              </div>
+              <div class="col">
+                <img
+                  width="25"
+                  height="25"
+                  src="https://img.icons8.com/ios-filled/25/000000/linkedin.png"
+                  alt="linkedin"
+                />
+              </div>
+              <div class="col">
+                <img
+                  width="25"
+                  height="25"
+                  src="https://img.icons8.com/ios-filled/30/000000/instagram-new--v1.png"
+                  alt="instagram"
+                />
+              </div>
             </div>
+          </div>
         </div>
-    </div>
-    <div class="profile-card">
-        <div class="img">
-            <img src="./aru_boy.jpg">
-        </div>
-        <div class="caption">
-            <h3>ARU BOY</h3>
-            <p>GAMD DETA HAI</p>
-            <div class="social-links">
-                <i class="fa-brands fa-github"></i>
-                <i class="fa-brands fa-linkedin"></i>
-                <i class="fa-brands fa-instagram"></i>
+        <!-- PROFILE CARD -->
+        <div
+          class="w-60 h-96 rounded-2x relative text-center items-center flex"
+        >
+          <img
+            src="./img/aryansh.jpg"
+            class="brightness-90 rounded-2xl object-cover w-full h-full border-black border-[3px]"
+          />
+          <div
+            class="bg-green-200 rounded-3xl border-black border-[3px] absolute w-4/5 h-auto p-2 bottom-3 capitalize z-10 font-bold text-black text-2xl mx-auto right-[10%] left-[10%]"
+          >
+            <h1 class="mb-2">aryansh</h1>
+            <div class="grid grid-cols-3 w-full justify-items-center">
+              <div class="col">
+                <img
+                  width="25"
+                  height="25"
+                  src="https://img.icons8.com/glyph-neue/25/000000/github.png"
+                  alt="github"
+                />
+              </div>
+              <div class="col">
+                <img
+                  width="25"
+                  height="25"
+                  src="https://img.icons8.com/ios-filled/25/000000/linkedin.png"
+                  alt="linkedin"
+                />
+              </div>
+              <div class="col">
+                <img
+                  width="25"
+                  height="25"
+                  src="https://img.icons8.com/ios-filled/30/000000/instagram-new--v1.png"
+                  alt="instagram"
+                />
+              </div>
             </div>
+          </div>
         </div>
-    </div>
-    <div class="profile-card">
-        <div class="img">
-            <img src="./aru_boy.jpg">
-        </div>
-        <div class="caption">
-            <h3>Aru Boy</h3>
-            <p>SEX WORKER</p>
-            <div class="social-links">
-                <i class="fa-brands fa-github"></i>
-                <i class="fa-brands fa-linkedin"></i>
-                <i class="fa-brands fa-instagram"></i>
+        <!-- PROFILE CARD -->
+        <div
+          class="w-60 h-96 rounded-2x relative text-center items-center flex"
+        >
+          <img
+            src="./img/bhavi.jpg"
+            class="brightness-90 rounded-2xl object-cover w-full h-full border-black border-[3px]"
+          />
+          <div
+            class="bg-fuchsia-300 rounded-3xl border-black border-[3px] absolute w-4/5 h-auto p-2 bottom-3 capitalize z-10 font-bold text-black text-2xl mx-auto right-[10%] left-[10%]"
+          >
+            <h1 class="mb-2">bhargavi</h1>
+            <div class="grid grid-cols-3 w-full justify-items-center">
+              <div class="col">
+                <img
+                  width="25"
+                  height="25"
+                  src="https://img.icons8.com/glyph-neue/25/000000/github.png"
+                  alt="github"
+                />
+              </div>
+              <div class="col">
+                <img
+                  width="25"
+                  height="25"
+                  src="https://img.icons8.com/ios-filled/25/000000/linkedin.png"
+                  alt="linkedin"
+                />
+              </div>
+              <div class="col">
+                <img
+                  width="25"
+                  height="25"
+                  src="https://img.icons8.com/ios-filled/30/000000/instagram-new--v1.png"
+                  alt="instagram"
+                />
+              </div>
             </div>
+          </div>
         </div>
-    </div>
-    <div class="profile-card">
-        <div class="img">
-            <img src="./aru_boy.jpg">
-        </div>
-        <div class="caption">
-            <h3>Aru Boy</h3>
-            <p>SEX WORKER</p>
-            <div class="social-links">
-                <i class="fa-brands fa-github"></i>
-                <i class="fa-brands fa-linkedin"></i>
-                <i class="fa-brands fa-instagram"></i>
+        <!-- PROFILE CARD -->
+        <div
+          class="w-60 h-96 rounded-2x relative text-center items-center flex"
+        >
+          <img
+            src="./img/prakhar.jpg"
+            class="brightness-90 rounded-2xl object-cover w-full h-full border-black border-[3px]"
+          />
+          <div
+            class="bg-green-200 rounded-3xl border-black border-[3px] absolute w-4/5 h-auto p-2 bottom-3 capitalize z-10 font-bold text-black text-2xl mx-auto right-[10%] left-[10%]"
+          >
+            <h1 class="mb-2">prakhar</h1>
+            <div class="grid grid-cols-3 w-full justify-items-center">
+              <div class="col">
+                <img
+                  width="25"
+                  height="25"
+                  src="https://img.icons8.com/glyph-neue/25/000000/github.png"
+                  alt="github"
+                />
+              </div>
+              <div class="col">
+                <img
+                  width="25"
+                  height="25"
+                  src="https://img.icons8.com/ios-filled/25/000000/linkedin.png"
+                  alt="linkedin"
+                />
+              </div>
+              <div class="col">
+                <img
+                  width="25"
+                  height="25"
+                  src="https://img.icons8.com/ios-filled/30/000000/instagram-new--v1.png"
+                  alt="instagram"
+                />
+              </div>
             </div>
+          </div>
         </div>
-    </div>
-    <div class="profile-card">
-        <div class="img">
-            <img src="./aru_boy.jpg">
-        </div>
-        <div class="caption">
-            <h3>Aru Boy</h3>
-            <p>SEX WORKER</p>
-            <div class="social-links">
-                <i class="fa-brands fa-github"></i>
-                <i class="fa-brands fa-linkedin"></i>
-                <i class="fa-brands fa-instagram"></i>
+        <!-- PROFILE CARD -->
+        <div
+          class="w-60 h-96 rounded-2x relative text-center items-center flex"
+        >
+          <img
+            src="./img/yanshika.jpg"
+            class="brightness-90 rounded-2xl object-cover w-full h-full border-black border-[3px]"
+          />
+          <div
+            class="bg-fuchsia-300 rounded-3xl border-black border-[3px] absolute w-4/5 h-auto p-2 bottom-3 capitalize z-10 font-bold text-black text-2xl mx-auto right-[10%] left-[10%]"
+          >
+            <h1 class="mb-2">yanshika</h1>
+            <div class="grid grid-cols-3 w-full justify-items-center">
+              <div class="col">
+                <img
+                  width="25"
+                  height="25"
+                  src="https://img.icons8.com/glyph-neue/25/000000/github.png"
+                  alt="github"
+                />
+              </div>
+              <div class="col">
+                <img
+                  width="25"
+                  height="25"
+                  src="https://img.icons8.com/ios-filled/25/000000/linkedin.png"
+                  alt="linkedin"
+                />
+              </div>
+              <div class="col">
+                <img
+                  width="25"
+                  height="25"
+                  src="https://img.icons8.com/ios-filled/30/000000/instagram-new--v1.png"
+                  alt="instagram"
+                />
+              </div>
             </div>
+          </div>
         </div>
-    </div>
-</div>
-    </div>
-    
-</body>
+      </div>
+    </section>
+  </body>
+  <script>
+    window.onscroll = function () {
+      if (window.scrollY > 60) {
+        document.querySelector("nav").classList.add("bg-[#086064]");
+        document.querySelector("nav").classList.add("backdrop-blur-lg");
+        document.querySelector("#menuArea").classList.add("!bg-opacity-100");
+      } else {
+        document.querySelector("nav").classList.remove("bg-[#086064]");
+        document.querySelector("nav").classList.remove("backdrop-blur-lg");
+        document.querySelector("#menuArea").classList.remove("!bg-opacity-100");
+      }
+    };
+    function openMenu() {
+      menuArea.classList.remove("hidden");
+    }
+
+    function closeMenu() {
+      menuArea.classList.add("hidden");
+    }
+  </script>
 </html>
