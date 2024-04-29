@@ -698,6 +698,10 @@ video {
   top: auto;
 }
 
+.bottom-5 {
+  bottom: 1.25rem;
+}
+
 .-z-10 {
   z-index: -10;
 }
@@ -1945,9 +1949,17 @@ video {
 }
 
 @media (min-width: 768px) {
+  .md\:bottom-3 {
+    bottom: 0.75rem;
+  }
+
   .md\:w-fit {
     width: -moz-fit-content;
     width: fit-content;
+  }
+
+  .md\:w-60 {
+    width: 15rem;
   }
 
   .md\:px-5 {
@@ -2060,6 +2072,10 @@ video {
 
   .lg\:p-20 {
     padding: 5rem;
+  }
+
+  .lg\:p-0 {
+    padding: 0px;
   }
 
   .lg\:px-7 {
